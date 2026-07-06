@@ -202,7 +202,10 @@ Level Game::Move(Level lvl) {
         (lvl.state.layout)[i].hitbox.safe.x -= lvl.state.speed;
         
         if ((lvl.state.layout)[i].pos.x < -(cellSize)) {
-            (lvl.state.layout).erase((lvl.state.layout).end());
+            (lvl.state.layout).erase((lvl.state.layout).begin() + i);
+            size--;
+            i--;
+            continue;
         }
 
         if ((lvl.state.layout)[i].pos.x < 4 * cellSize ||
